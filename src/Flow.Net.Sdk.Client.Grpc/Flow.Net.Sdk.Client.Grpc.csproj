@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Title>BTCTrader.Flow.Net.Sdk.Client.Grpc</Title>
-    <PackageId>BTCTrader.Flow.Net.Sdk.Client.Grpc</PackageId>
+    <Title>BTCTrader.FlowSharp.Sdk.Client.Grpc</Title>
+    <PackageId>BTCTrader.FlowSharp.Sdk.Client.Grpc</PackageId>
 	<Authors>BTCTrader</Authors>
     <Version>0.9.0</Version>
 	<Company>BTCTrader</Company>
-	<Description>gRPC SDK for flow.net</Description>
+	<Description>gRPC SDK for FlowSharp</Description>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	<RepositoryUrl>https://github.com/BTCTrader/flow.net</RepositoryUrl>
 	<PackageProjectUrl>https://github.com/BTCTrader/flow.net</PackageProjectUrl>
