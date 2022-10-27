@@ -58,8 +58,8 @@ namespace Flow.Net.Sdk.Client.Http
                 Id = collection.Id
             };
 
-            if (collection.Transactions != null)
-                flowCollection.TransactionIds = collection.Transactions?.Select(s => s.ToFlowTransactionId()).ToList();
+            flowCollection.TransactionIds = collection.Transactions?.Select(s => s.ToFlowTransactionId()).ToList();
+            flowCollection.Transactions = collection.Transactions?.Select(x => x.ToFlowTransactionResponse()).ToList();
 
             return flowCollection;
         }
@@ -139,7 +139,7 @@ namespace Flow.Net.Sdk.Client.Http
 
             return new FlowTransactionResult
             {
-                BlockId = transaction.Reference_block_id,
+                BlockId = transaction.Result.Block_id,
                 ErrorMessage = transaction.Result.Error_message,
                 Status = (Core.TransactionStatus)Enum.Parse(typeof(Core.TransactionStatus), transaction.Result.Status.ToString()),
                 StatusCode = uint.Parse(transaction.Result.Status_code.ToString()),
@@ -181,6 +181,11 @@ namespace Flow.Net.Sdk.Client.Http
                 PayloadSignatures = payloadSignatures,
                 EnvelopeSignatures = envelopeSignatures
             };
+
+            if (transaction.Result != null)
+            {
+                sendResponse.Result = transaction.ToFlowTransactionResult();
+            }
 
             foreach (var argument in transaction.Arguments)
                 sendResponse.Arguments.Add(Encoding.UTF8.GetString(argument).Decode());

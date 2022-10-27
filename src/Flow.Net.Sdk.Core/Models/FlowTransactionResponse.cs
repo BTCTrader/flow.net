@@ -2,5 +2,6 @@
 {
     public class FlowTransactionResponse : FlowTransactionBase
     {
+        public FlowTransactionResult Result { get; set; }
     }
 }
