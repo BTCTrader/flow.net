@@ -1896,7 +1896,7 @@ namespace Flow.Net.Sdk.Client.Http
         public DateTimeOffset Block_timestamp { get; set; }
 
         [JsonProperty("events", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
-        public ICollection<Event> Events { get; set; }
+        public ICollection<Event> Events { get; set; } = new List<Event>();
 
         [JsonProperty("_links", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
         public Links _links { get; set; }
