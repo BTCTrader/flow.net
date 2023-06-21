@@ -190,8 +190,6 @@ namespace Flow.Net.Sdk.Client.Http
             foreach (var argument in transaction.Arguments)
                 sendResponse.Arguments.Add(Encoding.UTF8.GetString(argument).Decode());
 
-            sendResponse.Id = transaction.Id;
-
             return sendResponse;
         }
 
