@@ -91,5 +91,15 @@ namespace Flow.Net.Sdk.Tests
             var envelopeTest = Rlp.EncodedCanonicalAuthorizationEnvelope(transaction);
             Assert.Equal(envelope, envelopeTest.BytesToHex());
         }
+
+        [Fact]
+        public async Task JustTest()
+        {
+            var flowClient = new FlowHttpClient(new HttpClient(), new FlowClientOptions { ServerUrl = "https://rest-mainnet.onflow.org/v1/" });
+            var accountEvents = await flowClient.GetEventsForHeightRangeAsync("flow.AccountCreated", 55115628, 55115637);
+            var feeEvents = await flowClient.GetEventsForHeightRangeAsync("A.f919ee77447b7497.FlowFees.FeesDeducted", 55115628, 55115637);
+            var depositEvents = await flowClient.GetEventsForHeightRangeAsync("A.1654653399040a61.FlowToken.TokensDeposited", 55115628, 55115637);
+            var withdrawnEvents = await flowClient.GetEventsForHeightRangeAsync("A.1654653399040a61.FlowToken.TokensWithdrawn", 55115628, 55115637);
+        }
     }
 }
